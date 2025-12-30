@@ -22,9 +22,9 @@ const { title, description, pubDate } = Astro.props;
 	<body>
 		<nav class="nav">
 			<div class="nav-container">
-				<a href="/" class="nav-logo">Blog</a>
+				<a href={import.meta.env.BASE_URL} class="nav-logo">Blog</a>
 				<div class="nav-links">
-					<a href="/">Home</a>
+					<a href={import.meta.env.BASE_URL}>Home</a>
 				</div>
 			</div>
 		</nav>
