@@ -1,43 +1,92 @@
-# Astro Starter Kit: Minimal
+# Blog
 
-```sh
-npm create astro@latest -- --template minimal
+A minimal blog built with [Astro](https://astro.build) and deployed to [GitHub Pages](https://pages.github.com).
+
+## Features
+
+- Write posts in Markdown
+- Automatic deployment via GitHub Actions
+- Clean, minimal design
+- Responsive layout
+- Zero-cost hosting
+
+## Getting Started
+
+### Local Development
+
+```bash
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Visit `http://localhost:4321` to see your blog locally.
 
-## 🚀 Project Structure
+### Creating a New Post
 
-Inside of your Astro project, you'll see the following folders and files:
+1. Create a new Markdown file in `src/content/blog/`
+2. Add frontmatter with required fields:
 
-```text
-/
-├── public/
+```markdown
+---
+title: Your Post Title
+description: A brief description (optional)
+pubDate: 2024-12-30
+---
+
+Your content here...
+```
+
+3. Write your content in Markdown
+4. Commit and push to GitHub
+5. The site will automatically rebuild and deploy
+
+### Project Structure
+
+```
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── content/
+│   │   └── blog/          # Blog posts (Markdown files)
+│   ├── layouts/           # Page layouts
+│   ├── components/        # Reusable components
+│   └── pages/             # Astro pages
+├── public/                # Static assets
+└── .github/
+    └── workflows/         # GitHub Actions workflows
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Deployment
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+The blog automatically deploys to GitHub Pages when you push to the `main` branch. The deployment is handled by GitHub Actions (see `.github/workflows/deploy.yml`).
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Setting Up GitHub Pages
 
-## 🧞 Commands
+1. Go to your repository settings on GitHub
+2. Navigate to Pages
+3. Under "Source", select "GitHub Actions"
+4. Your site will be available at `https://YOUR_USERNAME.github.io/Blog`
 
-All commands are run from the root of the project, from a terminal:
+## Customization
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+### Changing the Site URL
 
-## 👀 Want to learn more?
+Update `astro.config.mjs` with your GitHub username:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```javascript
+export default defineConfig({
+  site: 'https://YOUR_USERNAME.github.io',
+  base: '/Blog',
+  // ...
+});
+```
+
+### Styling
+
+The blog uses scoped CSS in Astro components. Edit the `<style>` blocks in:
+- `src/layouts/BlogLayout.astro` - Main layout styles
+- `src/components/PostCard.astro` - Post card styles
+- `src/pages/index.astro` - Homepage styles
+- `src/pages/posts/[slug].astro` - Post page styles
+
+## License
+
+MIT
