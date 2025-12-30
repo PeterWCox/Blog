@@ -12,6 +12,12 @@ const formattedDate = pubDate.toLocaleDateString('en-GB', {
 	month: 'long',
 	day: 'numeric'
 });
+
+// Ensure proper URL construction with base path
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
+	? import.meta.env.BASE_URL.slice(0, -1) 
+	: import.meta.env.BASE_URL;
+const postUrl = `${baseUrl}/posts/${slug}/`;
 ---
 
 <article class="post-card">
@@ -19,10 +25,10 @@ const formattedDate = pubDate.toLocaleDateString('en-GB', {
 		{formattedDate}
 	</time>
 	<h2 class="post-title">
-		<a href={`${import.meta.env.BASE_URL}posts/${slug}`}>{title}</a>
+		<a href={postUrl}>{title}</a>
 	</h2>
 	{description && <p class="post-description">{description}</p>}
-	<a href={`${import.meta.env.BASE_URL}posts/${slug}`} class="post-link">Read more →</a>
+	<a href={postUrl} class="post-link">Read more →</a>
 </article>
 
 <style>
