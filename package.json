@@ -1,5 +1,5 @@
 {
-  "name": "steadfast-series",
+  "name": "blog",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.16.6"
+    "@astrojs/markdown-remark": "^6.3.10",
+    "astro": "^5.16.6",
+    "remark-gfm": "^4.0.1"
   }
 }
